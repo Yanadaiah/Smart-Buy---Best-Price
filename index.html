@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Buy-Best Price</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link to your CSS stylesheet -->
+    <style>
+        /* CSS styles for header and small header sections */
+        /* Reset default styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styles for the header */
+        .main-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 10px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: auto; /* Adjust as needed */
+            margin: auto; /* Center align header content */
+            padding: 0;
+            text-align: left;
+            font-style: oblique;
+            font-weight: 400;
+            padding: 0px;
+        }
+
+        .logo img {
+            height: 200%;
+            width: 200%; /* Adjust logo size */
+            font-size: 20px;
+        }
+
+        .logo {
+            font-size: 19px;
+            align-items: center;
+            margin-left: 0px;
+            padding: 10px;
+            color: rgb(249, 242, 247);
+            text-align: left;
+            width: auto;
+            background-color: rgb(156, 92, 92);
+        }
+
+        .search-bar {
+            flex: 1; /* Take remaining space */
+            margin-left: 10px; /* Space between logo and search bar */
+            margin-left: 10px;
+        }
+
+        .search-bar form {
+            display: flex;
+            align-items: center;
+            height: auto;
+            width: auto;
+            margin-left: 0px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            width: 600px; /* Adjust width as needed */
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 19px;
+            height: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            white-space: nowrap; /* Space between search bar and contact info */
+            padding: 0px;
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            margin: 0;
+            padding: 0px;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* CSS styles for small header section */
+        .small-header {
+            background-color: #178289bb; /* Light background color with alpha transparency */
+            padding: 10px 20px;
+            text-align: center; /* Center align text */
+            display: flex;
+            justify-content: space-between; /* Distribute items evenly across the header */
+            align-items: center; /* Align items vertically */
+            color: white; /* Text color */
+            height: 45px;
+            width: auto;
+        }
+
+        .small-header h2 {
+            font-size: 18px;
+            margin: 0; /* Remove default margin */
+        }
+
+        .small-header ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0; /* Remove default margin */
+            display: flex;
+            justify-content: center; /* Center align list items horizontally */
+        }
+
+        .small-header ul li {
+            margin-right: 20px;
+        }
+
+        .small-header ul li:last-child {
+            margin-right: 0; /* Remove margin from last list item */
+        }
+
+        .small-header ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px; /* Add padding for better click/tap area */
+            transition: color 0.3s ease; /* Smooth color transition on hover */
+        }
+
+        .small-header ul li a:hover {
+            color: #d2ec12; /* Change text color on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <!-- <img src="images/logo1.png" alt="Your Logo"> -->
+                <p>Smart Buy-Best Price</p>
+            </div>
+            <div class="search-bar">
+                <form action="#" method="GET">
+                    <input type="text" name="search" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <p>Contact Us: <a href="mailto:smartbuy-bestprice@gmail.com">smartbuy-bestprice@gmail.com</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Small Header Section -->
+    <div class="small-header">
+        <h2>All Products At Best Price!</h2>
+        <ul>
+            <li><a href="#">Mobiles</a></li>
+            <li><a href="#">TVs & Appliances</a></li>
+            <li><a href="#">Smart Gadgets</a></li>
+            <li><a href="#">Fashion</a></li>
+            <li><a href="#">Accessories</a></li>
+            <li><a href="#">Jewelleries</a></li>
+            <li><a href="#">Beauty & Grooming</a></li>
+            <li><a href="#">Home & Kitchen</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="carousel">
+            <div class="slide"><a href="https://bit.ly/3RmwcxW"><img src="images/mobiles/download.png" alt="Hero Image 1"></a></div>
+            <!-- <div class="slide"><a href="mobile-page.html"><img src="images/hero2.jpg" alt="Hero Image 2"></a></div>
+            <div class="slide"><a href="mobile-page.html"><img src="images/hero.jpg" alt="Hero Image 3"></a></div> -->
+            <!-- Add more images as needed -->
+        </div>
+        <div class="pagination"></div> <!-- Pagination buttons will be added dynamically -->
+    </section>
+
+    <!-- CSS styles for hero section -->
+    <style>
+        .hero {
+            max-width: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center; /* Needed for absolute positioning of slides */
+            height: 50vh; /* Set hero section to half the viewport height */
+            margin-bottom: 10px;
+        }
+
+        .hero .carousel {
+            display: flex;
+            overflow-x: hidden; /* Hide overflow for smooth sliding */
+            scroll-snap-type: x mandatory; /* Snap each image to the container */
+            white-space: nowrap;
+            justify-content: center; /* Prevent slides from wrapping */
+            align-items: center; /* Center align images vertically */
+        }
+
+        .hero .carousel .slide {
+            flex: 0 0 100%; /* Each slide takes full width */
+            scroll-snap-align: center; /* Center align each slide */
+        }
+
+        .hero .carousel img {
+            width: 100%;
+            height: 100%; /* Set height to 100% of the hero section */
+            object-fit: cover; /* Ensure images cover the entire slide area */
+            object-position: center; /* Center align images within their container */
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center; /* Center align pagination buttons */
+        }
+
+        .pagination button {
+            background-color: #ddd;
+            border: none;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth color transition on hover */
+        }
+
+        .pagination button.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+
+    <!-- JavaScript for Hero Carousel -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const carousel = document.querySelector(".carousel");
+            const slides = carousel.querySelectorAll(".slide");
+            const pagination = document.querySelector(".pagination");
+
+            let currentSlide = 0;
+            let slideWidth = slides[0].clientWidth; // Assuming all slides have the same width
+            let slideCount = slides.length;
+            let autoSlideInterval = 10000; // Adjust slide interval in milliseconds
+
+            // Dynamically create pagination buttons
+            for (let i = 0; i < slideCount; i++) {
+                let button = document.createElement("button");
+                button.addEventListener("click", function() {
+                    goToSlide(i);
+                });
+                pagination.appendChild(button);
+            }
+
+            // Set active class for the first pagination button
+            pagination.children[currentSlide].classList.add("active");
+
+            // Function to move to a specific slide
+            function goToSlide(index) {
+                carousel.style.transform = `translateX(-${index * slideWidth}px)`;
+                currentSlide = index;
+                updatePagination();
+            }
+
+            // Function to update pagination buttons
+            function updatePagination() {
+                for (let button of pagination.children) {
+                    button.classList.remove("active");
+                }
+                pagination.children[currentSlide].classList.add("active");
+            }
+
+            // Automatic sliding functionality
+            setInterval(function() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                goToSlide(currentSlide);
+            }, autoSlideInterval);
+
+            // Update slide width and position on window resize
+            window.addEventListener("resize", function() {
+                slideWidth = slides[0].clientWidth;
+                goToSlide(currentSlide);
+            });
+        });
+    </script>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <h2>Top Deals!</h2>
+        <div class="product-container">
+            <div class="product-item">
+                <h3>Xiaomi 14</h3>
+                <a href="https://bit.ly/3RmwcxW"><img src="images/mobiles/Xiaomi 14 CIVI.jpg" alt="Product Image"></a>
+                <p>Xiaomi 14 CIVI Cinematic vision</p>
+            </div>
+            <div class="product-item">
+                <h3>Motorola Edge 50 Ultra</h3>
+                <a href="https://amzn.in/d/01Pyj4lr"><img src="images/mobiles/Motorola Edge 50 Ultra1.jpg" alt="Product Image"></a>
+                <p>Motorola Edge 50 Ultra 5G (Nordic Wood, 512 GB) (12 GB RAM)</p>
+            </div>
+            <div class="product-item">
+                <h3>realme GT 6T</h3>
+                <a href="https://amzn.in/d/07Spd3Rz"><img src="images/mobiles/realme GT 6.jpg" alt="Product Image"></a>
+                <p>realme GT 6T 5G (Razor Green, 8GB RAM+256GB Storage)</p>
+            </div>
+            <div class="product-item">
+                <h3>Xiaomi 14</h3>
+                <a href="https://amzn.in/d/07Spd3Rz"><img src="images/mobiles/realme GT 6.jpg" alt="Product Image"></a>
+                <p>realme GT 6T 5G (Razor Green, 8GB RAM+256GB Storage)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSS styles for product section -->
+    <style>
+        .product-section {
+            max-width: 100%;
+            margin: 20px auto; /* Center align the section */
+            padding: 20px;
+            margin-top: -20px;
+            text-align: center; /* Center align text */
+            height: 25%; /* Set product section to occupy 1/4 of the viewport height */
+            width: auto;
+            background-color: #e1cdc5cf;
+            /* margin-left: 10px;
+            margin-right: 10px; */
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            justify-content: center; /* Center align product items */
+            gap: 16px; /* Space between product items */
+            
+
+            
+        }
+
+        .product-item {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center; /* Center align text */
+            max-width: 100%; /* Adjust width as needed */
+        }
+
+        .product-item img {
+            width: 470px; /* Make images responsive */
+            height: 600px; /* Adjust the height of the image within the product item */
+            object-fit: cover; /* Ensure the image covers the container without stretching */
+            display: block;
+            margin: 0 auto; /* Center align images horizontally */
+        }
+
+        .product-item p {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</body>
+</html>
