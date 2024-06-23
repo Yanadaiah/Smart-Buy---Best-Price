@@ -1,5 +1,4 @@
-<style>
-            /* Reset default styles */
+/* Reset default styles */
 *,
 *::before,
 *::after {
@@ -12,58 +11,94 @@
 .main-header {
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0 auto; /* Center align header content */
+    max-width: 1200px;
+    /* Adjust as needed */
+    margin: auto;
+    /* Center align header content */
+    padding: 0 10px;
+    text-align: left;
+    font-style: oblique;
+    font-weight: 400;
+    flex-wrap: wrap;
+    /* Allow wrapping for smaller screens */
 }
 
 .logo img {
-    max-height: 40px; /* Adjust logo size */
-    font-size: 19px;
-    margin-left: 30px;
+    height: auto;
+    width: auto;
+    /* Adjust logo size */
+    font-size: 20px;
+    color: #fff;
+}
+
+.logo {
+    font-size: 28px;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    text-align: left;
+    background-color: #007bff;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .search-bar {
-    flex: 1; /* Take remaining space */
-    margin-left: 80px; /* Space between logo and search bar */
+    display: flex;
+    flex: 1;
+    /* Take remaining space */
+    margin-left: 10px;
+    /* Space between logo and search bar */
 }
 
 .search-bar form {
     display: flex;
     align-items: center;
-    height: auto;
-    width: auto;
+    width: 100%;
 }
 
 .search-bar input[type="text"] {
     padding: 8px;
-    width: 600px; /* Adjust width as needed */
+    flex: 1;
+    /* Take full width */
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
 }
 
 .search-bar button {
-    padding: 8px 16px;
+    padding: 8px 12px;
+    /* Smaller padding for button */
     background-color: #28a745;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 19px;
+    font-size: 16px;
+    margin-left: 0px;
+    flex: 0 0 auto;
+    /* Prevent button from stretching */
 }
 
 .contact-info {
-    margin-left: 20px; /* Space between search bar and contact info */
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: 10px;
 }
 
 .contact-info p {
-    font-size: 19px;
+    font-size: 16px;
+    margin: 0;
 }
 
 .contact-info a {
@@ -74,4 +109,224 @@
 .contact-info a:hover {
     text-decoration: underline;
 }
-        </style>
+
+/* CSS styles for small header section */
+.small-header {
+    background-color: #178289bb;
+    /* Light background color with alpha transparency */
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    /* Add pointer cursor for interactivity */
+}
+
+.small-header h2 {
+    font-size: 18px;
+    margin: 0;
+    flex: 1 100%;
+    display: block;
+    /* Ensure h2 tag is displayed */
+}
+
+.small-header ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    /* Initially hide the ul */
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1 100%;
+}
+
+.small-header.active ul {
+    display: flex;
+    /* Show the ul when small-header has 'active' class */
+}
+
+.small-header ul li {
+    margin: 5px 10px;
+}
+
+.small-header ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.small-header ul li a:hover {
+    color: #d2ec12;
+}
+
+/* Media query to display small-header h2 in mobile and tablet views */
+@media (max-width: 768px) {
+    .small-header h2 {
+        display: block;
+        /* Ensure h2 tag is displayed */
+    }
+
+    .small-header ul {
+        display: none;
+        /* Hide the ul initially */
+    }
+
+    .small-header.active h2 {
+        display: block;
+        /* Show h2 tag when small-header has 'active' class */
+    }
+}
+
+/* Additional styling for better highlighting effect */
+.small-header h2 {
+    font-weight: bold;
+    /* Make the header stand out */
+    text-transform: uppercase;
+    /* Enhance readability and attractiveness */
+}
+
+.small-header h2:hover {
+    color: #d2ec12;
+    /* Change text color on hover to attract attention */
+}
+
+/* CSS styles for hero section */
+.hero {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    margin-bottom: 10px;
+}
+
+.hero .carousel {
+    display: flex;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.hero .carousel .slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    display: inline-block;
+}
+
+.hero .carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+/* CSS styles for product section */
+.product-section {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #e1cdc5cf;
+    font-size: 32px;
+    color: rgb(69, 3, 65);
+    font-style: oblique;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.product-item {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.product-item p {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .search-bar {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .search-bar input[type="text"] {
+        width: 100%;
+    }
+
+    .search-bar button {
+        width: auto;
+        margin-left: 10px;
+    }
+
+    .contact-info {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .hero {
+        height: 30vh;
+        /* Adjust height for smaller screens */
+    }
+
+
+    .product-item img {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .small-header ul li {
+        margin: 5px 0;
+    }
+
+    .hero {
+        height: 25vh;
+        /* Adjust height for smaller screens */
+    }
+
+    .product-section {
+        padding: 10px;
+    }
+}
