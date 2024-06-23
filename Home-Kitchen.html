@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Buy-Best Price/Best in Home & Kitchen</title>
+    <style>
+        /* Reset default styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styles for the header */
+        .main-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px; /* Adjust as needed */
+            margin: auto; /* Center align header content */
+            padding: 0 10px;
+            text-align: left;
+            font-style: oblique;
+            font-weight: 400;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+        }
+
+        .logo img {
+            height: auto;
+            width: auto; /* Adjust logo size */
+            font-size: 20px;
+        }
+
+        .logo {
+            font-size: 19px;
+            align-items: center;
+            padding: 10px;
+            color: rgb(249, 242, 247);
+            text-align: left;
+            background-color: rgb(156, 92, 92);
+        }
+
+        .search-bar {
+            display: flex;
+            flex: 1; /* Take remaining space */
+            margin-left: 10px; /* Space between logo and search bar */
+        }
+
+        .search-bar form {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            flex: 1; /* Take full width */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .search-bar button {
+            padding: 8px 12px; /* Smaller padding for button */
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 0px;
+            flex: 0 0 auto; /* Prevent button from stretching */
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+ /* CSS styles for small header section */
+.small-header {
+    background-color: #178289bb; /* Light background color with alpha transparency */
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    cursor: pointer; /* Add pointer cursor for interactivity */
+}
+
+.small-header h2 {
+    font-size: 18px;
+    margin: 0;
+    flex: 1 100%;
+    display: block; /* Ensure h2 tag is displayed */
+}
+
+.small-header ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hide the ul */
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1 100%;
+}
+
+.small-header.active ul {
+    display: flex; /* Show the ul when small-header has 'active' class */
+}
+
+.small-header ul li {
+    margin: 5px 10px;
+}
+
+.small-header ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.small-header ul li a:hover {
+    color: #d2ec12;
+}
+
+/* Media query to display small-header h2 in mobile and tablet views */
+@media (max-width: 768px) {
+    .small-header h2 {
+        display: block; /* Ensure h2 tag is displayed */
+    }
+
+    .small-header ul {
+        display: none; /* Hide the ul initially */
+    }
+
+    .small-header.active h2 {
+        display: block; /* Show h2 tag when small-header has 'active' class */
+    }
+}
+
+/* Additional styling for better highlighting effect */
+.small-header h2 {
+    font-weight: bold; /* Make the header stand out */
+    text-transform: uppercase; /* Enhance readability and attractiveness */
+}
+
+.small-header h2:hover {
+    color: #d2ec12; /* Change text color on hover to attract attention */
+}
+
+
+        /* CSS styles for hero section */
+        .hero {
+            max-width: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            height: 50vh; /* Set hero section to half the viewport height */
+            margin-bottom: 10px;
+        }
+
+        .hero .carousel {
+            display: flex;
+            overflow-x: hidden;
+            scroll-snap-type: x mandatory;
+            white-space: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero .carousel .slide {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+        }
+
+        .hero .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination button {
+            background-color: #ddd;
+            border: none;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* CSS styles for product section */
+        .product-section {
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #e1cdc5cf;
+            font-size: 32px;
+            color: rgb(69, 3, 65);
+            font-style: oblique;;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .product-item {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-item p {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .search-bar {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .search-bar input[type="text"] {
+                width: 100%;
+            }
+
+            .search-bar button {
+                width: auto;
+                margin-left: 10px;
+            }
+
+            .contact-info {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .hero {
+                height: 30vh; /* Adjust height for smaller screens */
+            }
+
+            .pagination {
+                bottom: 5px;
+            }
+
+            .product-item img {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .small-header ul li {
+                margin: 5px 0;
+            }
+
+            .hero {
+                height: 25vh; /* Adjust height for smaller screens */
+            }
+
+            .product-section {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <p>Smart Buy-Best Price</p>
+            </div>
+            <div class="search-bar">
+                <form action="#" method="GET">
+                    <input type="text" name="search" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <p>Contact Us: <a href="mailto:smartbuy-bestprice@gmail.com">smartbuy-bestprice@gmail.com</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Small Header Section -->
+    <div class="small-header" onmouseover="showHeaderOptions()" onmouseout="hideHeaderOptions()">
+        <h2>All Products At Best Price!</h2>
+        <ul>
+            <li><a href="SmartBuy-BestPrice.html">Home</a></li>
+            <li><a href="Mobiles.html">Mobiles</a></li>
+            <li><a href="TVs-Appliances.html">TVs & Appliances</a></li>
+            <li><a href="Smart-Gadgets.html">Smart Gadgets</a></li>
+            <li><a href="Fashion.html">Fashion</a></li>
+            <li><a href="Accessories.html">Accessories</a></li>
+            <li><a href="Jewelleries.html">Jewelleries</a></li>
+            <li><a href="Beauty-Grooming.html">Beauty & Grooming</a></li>
+            <li><a href="Home-Kitchen.html">Home & Kitchen</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="carousel">
+            <div class="slide"><a href="https://bit.ly/3RmwcxW"><img src="images\mobiles\Xiaomi 14 CIVI.jpg" alt="Hero Image 1"></a></div>
+            <!-- <div class="slide"><a href="https://bit.ly/3NhcgKr"><img src="images\mobiles\Infinix Note 40 5g.jpg" alt="Hero Image 2"></a></div>
+            <div class="slide"><a href="https://bit.ly/42wiKq9"><img src="images/mobiles/download.png" alt="Hero Image 3"></a></div> -->
+        </div>
+        <div class="pagination">
+            <button class="active"></button>
+            <button></button>
+            <button></button>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <p>Today Top Deal</p> 
+        <div class="product-container">
+            <!-- Product items go here -->
+            <div class="product-item">
+                <a href="https://bit.ly/3RmwcxW"><img src="images\mobiles\Xiaomi 14 CIVI.jpg" alt="Product Image"></a>
+                <a href="https://bit.ly/3RmwcxW"><p>Xiaomi 14 CIVI</p></a>
+            </div>
+            <div class="product-item">
+                <a href="https://bit.ly/3RmwcxW"><img src="images\mobiles\Motorola Edge 50 Ultra1.jpg" alt="Product Image"></a>
+                <a href="https://bit.ly/3RmwcxW"><p>Motorola Edge 50 Ultra</p></a>
+            </div>
+            <div class="product-item">
+                <a href="https://bit.ly/3RmwcxW"><img src="images\mobiles\Infinix Note 40 5g.jpg" alt="Product Image"></a>
+                <a href="https://bit.ly/3RmwcxW"><p>Infinix Note 40</p></a>
+            </div>
+            <div class="product-item">
+                <a href="https://bit.ly/3RmwcxW"><img src="images\mobiles\realme GT 6.jpg" alt="Product Image"></a>
+                <a href="https://bit.ly/3RmwcxW"><p>realme GT 6</p></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript to handle the carousel functionality
+        const carousel = document.querySelector('.carousel');
+        const slides = document.querySelectorAll('.slide');
+        const paginationButtons = document.querySelectorAll('.pagination button');
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            const offset = -currentSlide * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+            updatePagination();
+        }
+
+        function updatePagination() {
+            paginationButtons.forEach((button, index) => {
+                if (index === currentSlide) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        paginationButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 3000); // Change slide every 3 seconds
+
+        // JavaScript to handle the small header interactivity
+        const smallHeader = document.querySelector('.small-header');
+        const headerOptions = document.querySelector('.small-header ul');
+
+        function showHeaderOptions() {
+            headerOptions.style.display = 'flex';
+        }
+
+        function hideHeaderOptions() {
+            headerOptions.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
