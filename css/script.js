@@ -38,30 +38,3 @@ document.getElementById('search-form').addEventListener('submit', function(event
 });
 
 //Caurosal
-
-let currentIndex = 0;
-
-const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
-
-function showSlide(index) {
-    const carousel = document.querySelector('.carousel');
-    const slideWidth = slides[0].clientWidth;
-    carousel.style.transform = `translateX(-${index * slideWidth}px)`;
-}
-
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    showSlide(currentIndex);
-}
-
-window.addEventListener('resize', () => {
-    showSlide(currentIndex);
-});
-
-setInterval(nextSlide, 5000); // Change slide every 5 seconds
-
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentIndex); // Ensure the first slide is shown on load
-});
-
