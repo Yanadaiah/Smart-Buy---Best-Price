@@ -1,8 +1,16 @@
 /* Reset default styles */
 */* Basic styles */
-
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     font-family: Arial, sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Hide elements with the .hidden class */
@@ -10,12 +18,7 @@ body {
     display: none;
 }
 
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 /* Basic styles for the header */
 .main-header {
