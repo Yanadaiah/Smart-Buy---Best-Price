@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Buy-Best Price</title>
-    <link rel="stylesheet" href="css\styles.css">
+    <title>Easy Buy - Best Price</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -47,83 +47,59 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="carousel">
-            <div class="slide"><a href="Mobiles.html"><img src="images\Home\Home logo.png"
-                        alt="Hero Image 1"></a></div>
+            <div class="slide"><a href="Mobiles.html"><img src="images/Home/Home logo.png" alt="Hero Image 1"></a></div>
         </div>
     </section>
 
     <!-- Product Section -->
     <section class="product-section">
-        <p1>Today Top Deal</p1>
-        <div class="product-container">
-            <!-- Product items go here -->
-            <div class="product-item">
-                <a href="https://amzn.in/d/0eqTCfq0"><img src="images\mobiles\Samsung Galaxy S24 Ultra.png" alt="Product Image"></a>
-                <a href="https://amzn.in/d/0eqTCfq0">
-                    <p>Samsung Galaxy S24 Ultra</p>
-                </a>
-                <div class="product-specifications">
-                    
-                    <ul>
-                        <li>12GB/256GB Storage</li>
-                        <li>Snapdragon 8 Gen 3</li>
-                        <li>Li-Ion 5000 mAh/45W wired/15W wireless/4.5W reverse wireless</li>
-                    </ul>
-                </div>
-                <div class="product-description">
-                    <p>Mobile Camera 200 + 12 + 10 + 50 MP & 12 MP Front Camera </p>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="more-details-link">More details</a>
-                    <a href="https://amzn.in/d/0eqTCfq0" class="buy-button">Buy</a>
-                </div>
-            </div>
-            <div class="product-item">
-                <a href="https://amzn.in/d/0i1XfYIg"><img src="images\mobiles\iQOO Z9x 5G.png"
-                        alt="Product Image"></a>
-                <a href="https://amzn.in/d/0i1XfYIg">
-                    <p>iQOO Z9x 5G</p>
-                </a>
-                <div class="product-specifications">
-                    
-                    <ul>
-                        <li>Snapdragon 6 Gen 1 with 560K+ AnTuTu Score</li>
-                        <li>6000 mAh Battery-44W FlashCharge</li>
-                        <li>7.99mm Slim design-IP64 against Dust & Water</li>
-                    </ul>
-                </div>
-                <div class="product-description">
-                    <p>Mobile Device Available with 4GB/6GB/8GB RAM and 128GB Storage</p>
-                </div>
-                <div class="product-actions">
-                    <a href="https://amzn.in/d/0i1XfYIg" class="more-details-link">More details</a>
-                    <a href="https://amzn.in/d/0i1XfYIg" class="buy-button">Buy</a>
-                </div>
-            </div>
-            <div class="product-item">
-                <a href="https://amzn.in/d/08bCZneY"><img src="images\TVs-Appliances\Toshiba 126 cm (50 inches) 4K Ultra HD Smart QLED.png" alt="Product Image"></a>
-                <a href="https://amzn.in/d/08bCZneY">
-                    <p>Toshiba 126 cm (50 inches) 4K Ultra HD Smart QLED</p>
-                </a>
-                <div class="product-specifications">
-                    
-                    <ul>
-                        <li>QLED/4K/60 Hz</li>
-                        <li>8D x 123.3W x 71.5H Centimeters</li>
-                        <li>1.5 GB/4 GB/Bluetooth/178 Degrees</li>
-                    </ul>
-                </div>
-                <div class="product-description">
-                    <p>Toshiba 4K Ultra HD Smart QLED TV</p>
-                </div>
-                <div class="product-actions">
-                    <a href="https://amzn.in/d/08bCZneY" class="more-details-link">More details</a>
-                    <a href="https://amzn.in/d/08bCZneY" class="buy-button">Buy</a>
-                </div>
-            </div>
+        <p>Today's Top Deal</p>
+        <div class="product-container" id="product-container">
+            <!-- Product items will be added here dynamically -->
         </div>
     </section>
-    <script src="css\script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fetch product data from JSON file
+            fetch('Products/Main.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const productContainer = document.getElementById('product-container');
+                    data.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.classList.add('product-item');
+
+                        productItem.innerHTML = `
+                            <a href="${product.link}"><img src="${product.image}" alt="Product Image"></a>
+                            <a href="${product.link}"><p>${product.title}</p></a>
+                            <div class="product-specifications">
+                                <ul>
+                                    ${product.specifications.map(spec => `<li>${spec}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="product-description">
+                                <p>${product.description}</p>
+                            </div>
+                            <div class="product-actions">
+                                <a href="${product.link}" class="more-details-link">More details</a>
+                                <a href="${product.link}" class="buy-button">Buy</a>
+                            </div>
+                        `;
+
+                        productContainer.appendChild(productItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching product data:', error));
+        });
+    </script>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>

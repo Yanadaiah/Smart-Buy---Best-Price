@@ -1,0 +1,49 @@
+[
+    {
+        "image": "images/mobiles/Samsung Galaxy S24 Ultra.png",
+        "link": "https://amzn.in/d/0eqTCfq0",
+        "title": "Samsung Galaxy S24 Ultra",
+        "specifications": [
+            "12GB/256GB Storage",
+            "Snapdragon 8 Gen 3",
+            "Li-Ion 5000 mAh/45W wired/15W wireless/4.5W reverse wireless"
+        ],
+        "description": "Mobile Camera 200 + 12 + 10 + 50 MP & 12 MP Front Camera "
+    },
+
+    {
+        "image": "images/mobiles/iQOO Z9x 5G.png",
+        "link": "https://amzn.in/d/0i1XfYIg",
+        "title": "iQOO Z9x 5G",
+        "specifications": [
+            "Snapdragon 6 Gen 1 with 560K+ AnTuTu Score",
+            "6000 mAh Battery-44W FlashCharge",
+            "7.99mm Slim design-IP64 against Dust & Water"
+        ],
+        "description": "Mobile Device Available with 4GB/6GB/8GB RAM and 128GB Storage"
+    },
+
+    {
+        "image": "images/TVs-Appliances/Toshiba 126 cm (50 inches) 4K Ultra HD Smart QLED.png",
+        "link": "https://amzn.in/d/08bCZneY",
+        "title": "Toshiba 126 cm (50 inches) 4K Ultra HD Smart QLED",
+        "specifications": [
+            "QLED/4K/60 Hz",
+            "8D x 123.3W x 71.5H Centimeters",
+            "1.5 GB/4 GB/Bluetooth/178 Degrees"
+        ],
+        "description": "Toshiba 4K Ultra HD Smart QLED TV"
+    },
+    {
+        "image": "images/mobiles/Samsung Galaxy S24 Ultra.png",
+        "link": "https://amzn.in/d/0eqTCfq0",
+        "title": "Samsung Galaxy S24 Ultra",
+        "specifications": [
+            "12GB/256GB Storage",
+            "Snapdragon 8 Gen 3",
+            "Li-Ion 5000 mAh/45W wired/15W wireless/4.5W reverse wireless"
+        ],
+        "description": "Mobile Camera 200 + 12 + 10 + 50 MP & 12 MP Front Camera "
+    }
+
+]
