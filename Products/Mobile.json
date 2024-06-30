@@ -1,0 +1,38 @@
+[
+    {
+        "image": "images/mobiles/Samsung Galaxy S24 Ultra.png",
+        "link": "https://amzn.in/d/0eqTCfq0",
+        "title": "Samsung Galaxy S24 Ultra",
+        "specifications": [
+            "12GB/256GB Storage",
+            "Snapdragon 8 Gen 3",
+            "Li-Ion 5000 mAh/45W wired/15W wireless/4.5W reverse wireless"
+        ],
+        "description": "Mobile Camera 200 + 12 + 10 + 50 MP & 12 MP Front Camera "
+    },
+
+    {
+        "image": "images/mobiles/iQOO Z9x 5G.png",
+        "link": "https://amzn.in/d/0i1XfYIg",
+        "title": "iQOO Z9x 5G",
+        "specifications": [
+            "Snapdragon 6 Gen 1 with 560K+ AnTuTu Score",
+            "6000 mAh Battery-44W FlashCharge",
+            "7.99mm Slim design-IP64 against Dust & Water"
+        ],
+        "description": "Mobile Device Available with 4GB/6GB/8GB RAM and 128GB Storage"
+    },
+
+    {
+        "image": "images/mobiles/Oneplus Nord Ce4.png",
+        "link": "https://amzn.in/d/020zEoaV",
+        "title": "Oneplus Nord Ce4",
+        "specifications": [
+            "5500mAh Battery,100W SuperVOOC charging",
+            "SONY LYT-600 (IMX882) 50MP camera",
+            "Dazzling Durable Design"
+        ],
+        "description": "Mobile Device Available with 8BG RAM and 128/256GB Storage"
+    }
+
+]

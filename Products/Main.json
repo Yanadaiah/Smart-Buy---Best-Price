@@ -34,16 +34,17 @@
         ],
         "description": "Toshiba 4K Ultra HD Smart QLED TV"
     },
+
     {
-        "image": "images/mobiles/Samsung Galaxy S24 Ultra.png",
-        "link": "https://amzn.in/d/0eqTCfq0",
-        "title": "Samsung Galaxy S24 Ultra",
+        "image": "images/mobiles/Oneplus Nord Ce4.png",
+        "link": "https://amzn.in/d/020zEoaV",
+        "title": "Oneplus Nord Ce4",
         "specifications": [
-            "12GB/256GB Storage",
-            "Snapdragon 8 Gen 3",
-            "Li-Ion 5000 mAh/45W wired/15W wireless/4.5W reverse wireless"
+            "5500mAh Battery,100W SuperVOOC charging",
+            "SONY LYT-600 (IMX882) 50MP camera",
+            "Dazzling Durable Design"
         ],
-        "description": "Mobile Camera 200 + 12 + 10 + 50 MP & 12 MP Front Camera "
+        "description": "Mobile Device Available with 8BG RAM and 128/256GB Storage"
     }
 
 ]
