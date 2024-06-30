@@ -58,33 +58,162 @@
 
     <!-- Product Section -->
     <section class="product-section">
-        <p1>Today Top Deal</p1>
-        <div class="product-container">
+        <p>Today Top Deal</p>
+        <div class="product-container" id="product-container">
             <!-- Product items go here -->
-            <div class="product-item">
-                <a href="https://amzn.in/d/0eqTCfq0"><img src="images\mobiles\Samsung Galaxy S24 Ultra.png" alt="Product Image"></a>
-                <a href="https://amzn.in/d/0eqTCfq0">
-                    <p>Samsung Galaxy S24 Ultra</p>
-                </a>
-                <div class="product-specifications">
-                    
-                    <ul>
-                        <li>12GB/256GB Storage</li>
-                        <li>Snapdragon 8 Gen 3</li>
-                        <li>Li-Ion 5000 mAh/45W wired/15W wireless/4.5W reverse wireless</li>
-                    </ul>
-                </div>
-                <div class="product-description">
-                    <p>Mobile Camera 200 + 12 + 10 + 50 MP & 12 MP Front Camera </p>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="https://amzn.in/d/0eqTCfq0">More details</a>
-                    <a href="https://amzn.in/d/0eqTCfq0" class="buy-button">Buy</a>
-                </div>
-            </div>
         </div>
     </section>
-    <script src="css\script.js"></script>
+    
+    <script>
+
+        //reading prodcts data
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fetch product data from JSON file
+            fetch('Products/Beauty.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const productContainer = document.getElementById('product-container');
+                    data.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.classList.add('product-item');
+
+                        productItem.innerHTML = `
+                            <a href="${product.link}"><img src="${product.image}" alt="Product Image"></a>
+                            <a href="${product.link}"><p>${product.title}</p></a>
+                            <div class="product-specifications">
+                                <ul>
+                                    ${product.specifications.map(spec => `<li>${spec}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="product-description">
+                                <p>${product.description}</p>
+                            </div>
+                            <div class="product-actions">
+                                <a href="${product.link}" class="more-details-link">More details</a>
+                                <a href="${product.link}" class="buy-button">Buy</a>
+                            </div>
+                        `;
+
+                        productContainer.appendChild(productItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching product data:', error));
+        });
+
+
+        // JavaScript to handle the small header interactivity
+        const smallHeader = document.querySelector('.small-header');
+        const headerOptions = document.querySelector('.small-header ul');
+
+        function showHeaderOptions() {
+            headerOptions.style.display = 'flex';
+        }
+
+        function hideHeaderOptions() {
+            headerOptions.style.display = 'none';
+        }
+
+        // search functionality
+        // Levenshtein distance function
+        function levenshteinDistance(a, b) {
+            const an = a.length;
+            const bn = b.length;
+            if (an === 0) return bn;
+            if (bn === 0) return an;
+            const matrix = Array.from({ length: bn + 1 }, (_, i) => [i]);
+            for (let j = 1; j <= an; j++) matrix[0][j] = j;
+            for (let i = 1; i <= bn; i++) {
+                for (let j = 1; j <= an; j++) {
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j] + 1, // deletion
+                        matrix[i][j - 1] + 1, // insertion
+                        matrix[i - 1][j - 1] + (a[j - 1] === b[i - 1] ? 0 : 1) // substitution
+                    );
+                }
+            }
+            return matrix[bn][an];
+        }
+
+        // Add event listener for search form submission
+        document.getElementById('search-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            let query = document.getElementById('search-input').value.toLowerCase(); // Get the search query
+            let items = document.querySelectorAll('.product-item'); // Get all product items
+
+            let resultsFound = false; // Variable to track if any results are found
+            const maxDistance = 2; // Maximum Levenshtein distance for fuzzy matching
+
+            // Loop through the product items and hide those that don't match the query
+            items.forEach(function (item) {
+                let text = item.innerText.toLowerCase();
+                let words = text.split(/\s+/); // Split item text into words
+                let match = words.some(word => {
+                    return word.includes(query) || levenshteinDistance(word, query) <= maxDistance;
+                });
+
+                if (match) {
+                    item.classList.remove('hidden');
+                    resultsFound = true;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            if (!resultsFound) {
+                // Show a message if no results are found
+                alert('No products found matching your search criteria.');
+            }
+        });
+
+        // Add event listener for input field to show suggestions
+        document.getElementById('search-input').addEventListener('input', function () {
+            let query = this.value.toLowerCase(); // Get the search query
+            let items = document.querySelectorAll('.product-item'); // Get all product items
+            let suggestionsBox = document.getElementById('suggestions');
+            suggestionsBox.innerHTML = ''; // Clear previous suggestions
+
+            let suggestions = [];
+            const maxDistance = 2; // Maximum Levenshtein distance for fuzzy matching
+
+            items.forEach(function (item) {
+                let text = item.innerText.toLowerCase();
+                let words = text.split(/\s+/); // Split item text into words
+                words.forEach(function (word) {
+                    if (word.includes(query) || levenshteinDistance(word, query) <= maxDistance) {
+                        if (!suggestions.includes(word)) {
+                            suggestions.push(word);
+                        }
+                    }
+                });
+            });
+
+            suggestions.slice(0, 5).forEach(function (suggestion) { // Display only top 5 suggestions
+                let suggestionItem = document.createElement('div');
+                suggestionItem.textContent = suggestion;
+                suggestionItem.addEventListener('click', function () {
+                    document.getElementById('search-input').value = suggestion;
+                    suggestionsBox.innerHTML = '';
+                });
+                suggestionsBox.appendChild(suggestionItem);
+            });
+        });
+        document.addEventListener('click', function (event) {
+            let searchInput = document.getElementById('search-input');
+            let suggestionsBox = document.getElementById('suggestions');
+            if (!searchInput.contains(event.target) && !suggestionsBox.contains(event.target)) {
+                suggestionsBox.innerHTML = '';
+            }
+        });
+
+
+    </script>
+
 </body>
 
 </html>
